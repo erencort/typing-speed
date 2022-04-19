@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Timer from "./components/Timer";
+import UserInput from "./components/UserInput";
+import Words from "./components/Words";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="word-section">
+        <Words />
+      </div>
+      <div className="timer-section">
+        <Timer />
+      </div>
+      <div className="input-section">
+        <UserInput />
+      </div>
     </div>
   );
 }
