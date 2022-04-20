@@ -14,8 +14,10 @@ function Words() {
 
   return (
     <div className="words-section">
-      {words.map((item) => (
-        <p className="word">{item}</p>
+      {words.map((item, i) => (
+        <p key={i} className="word">
+          {item}
+        </p>
       ))}
     </div>
   );

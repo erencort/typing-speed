@@ -28,3 +28,19 @@
     display: inline-block;
     margin: .2rem;
 }
+
+.execute-btn{
+    display: none;
+}
+
+.disabled {
+    pointer-events: none
+}
+
+.disabled:focus { 
+    outline: none; 
+}
+
+.active {
+    pointer-events: all;
+}
