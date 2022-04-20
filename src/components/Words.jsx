@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setWords } from "../redux/wordSlice";
 
 function Words() {
-  //   const [words, setWords] = useState([]);
   const words = useSelector((state) => state.typing.words);
   const activeWord = useSelector((state) => state.typing.activeWord);
   const failedWords = useSelector((state) => state.typing.failedWords);
   const successfulWords = useSelector((state) => state.typing.successfulWords);
+  const turn = useSelector((state) => state.typing.turn);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,9 +20,11 @@ function Words() {
       {words.map((item, i) => (
         <p
           key={i}
-          className={`word ${activeWord == item ? "background" : ""} ${
-            failedWords.includes(item) ? "failed" : ""
-          } ${successfulWords.includes(item) ? "successful" : ""}`}
+          className={`word ${
+            activeWord == item && turn == i ? "background" : ""
+          } ${failedWords.includes(item) && turn > i ? "failed" : ""} ${
+            successfulWords.includes(item) && turn > i ? "successful" : ""
+          }`}
         >
           {item}
         </p>
