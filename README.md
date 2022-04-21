@@ -1,6 +1,6 @@
 # Live
 
-https://ernecort-typing-speed.netlify.app
+https://erencort-typing-speed.netlify.app
 
 # Getting Started with Create React App
 
