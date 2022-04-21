@@ -10,13 +10,10 @@ import {
 function UserInput() {
   const dispatch = useDispatch();
   const countdown = useSelector((state) => state.typing.countdown);
-  const failed = useSelector((state) => state.typing.failed);
-  const success = useSelector((state) => state.typing.success);
-  const word = useSelector((state) => state.typing.word);
   const status = useSelector((state) => state.typing.status);
+  const userInput = useSelector((state) => state.typing.userInput);
   const [inputIsDisabled, setInputIsDisabled] = useState();
   const [buttonIsDisabled, setButtonIsDisabled] = useState();
-  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     status === "finished" || status === "firstMounted"
@@ -43,10 +40,9 @@ function UserInput() {
 
   const compareWordsHandle = (e) => {
     e.preventDefault();
-    dispatch(setUserInput(inputValue));
-    if (inputValue != "") {
+    if (userInput != "") {
       dispatch(compareWords());
-      setInputValue("");
+      dispatch(setUserInput(""));
     }
   };
 
@@ -55,14 +51,13 @@ function UserInput() {
       <form onSubmit={(e) => compareWordsHandle(e)}>
         <input
           disabled={inputIsDisabled}
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={userInput}
+          onChange={(e) => dispatch(setUserInput(e.target.value))}
         />
       </form>
       <button disabled={buttonIsDisabled} onClick={start}>
         Start
       </button>
-      {failed} {word} {success}
     </div>
   );
 }
