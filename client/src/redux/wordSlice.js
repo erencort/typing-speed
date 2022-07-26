@@ -42,7 +42,7 @@ export const wordSlice = createSlice({
       state.status = "running";
     },
     setUserInput: (state, action) => {
-      state.userInput = action.payload;
+      state.userInput = action.payload.toLowerCase();
     },
     compareWords: (state, action) => {
       if (state.userInput === state.activeWord) {
