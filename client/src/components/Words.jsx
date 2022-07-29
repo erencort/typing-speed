@@ -12,7 +12,7 @@ function Words() {
 
   useEffect(() => {
     dispatch(setWords());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="words-section">
@@ -20,7 +20,7 @@ function Words() {
         <p
           key={i}
           className={`word ${
-            activeWord == item && turn == i ? "background" : ""
+            activeWord === item && turn === i ? "background" : ""
           } ${failedWords.includes(item) && turn > i ? "failed" : ""} ${
             successfulWords.includes(item) && turn > i ? "successful" : ""
           }`}

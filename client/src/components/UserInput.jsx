@@ -40,7 +40,7 @@ function UserInput() {
 
   const compareWordsHandle = (e) => {
     e.preventDefault();
-    if (userInput != "") {
+    if (userInput !== "") {
       dispatch(compareWords());
       dispatch(setUserInput(""));
     }

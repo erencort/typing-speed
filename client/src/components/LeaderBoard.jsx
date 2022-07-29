@@ -7,30 +7,38 @@ function LeaderBoard() {
   const dispatch = useDispatch();
   const results = useSelector((state) => state.leaderBoard.results);
   const status = useSelector((state) => state.leaderBoard.status);
+  const error = useSelector((state) => state.leaderBoard.error);
   useEffect(() => {
     dispatch(fetchResults());
-    console.log(results);
-    console.log(status);
   }, [dispatch]);
+
+  if (status === "failed") {
+    return <div>an error occurred: {error}</div>;
+  }
+
   return (
-    <div>
-      <div>LeaderBoard</div>
+    <div className="leaderboard">
+      <h3>LeaderBoard</h3>
       <div>
-        <ul>
-          {results.map((item) => {
+        {status === "loading" ? (
+          <div>Loading...</div>
+        ) : (
+          results.map((item) => {
             return (
-              <li>
+              <li key={item._id} className="leaderboard-list-item">
                 <div>
-                  <div>{item.name}</div>
-                  <div>{item.result}</div>
+                  <div className="leaderboard-list-name">{item.name}</div>
+                  <div className="leaderboard-list-result">{item.result}</div>
                 </div>
               </li>
             );
-          })}
-        </ul>
+          })
+        )}
       </div>
     </div>
   );
 }
 
 export default LeaderBoard;
+
+/*  */

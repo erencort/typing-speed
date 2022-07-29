@@ -32,8 +32,10 @@ export const leaderBoardSlice = createSlice({
       state.status = "loading";
     },
     [fetchResults.fulfilled]: (state, action) => {
-      state.results = action.payload;
       state.status = "succeed";
+      //sorting by score
+      action.payload.sort((a, b) => b.result - a.result);
+      state.results = action.payload;
     },
     [fetchResults.rejected]: (state, action) => {
       state.error = action.error.message;
